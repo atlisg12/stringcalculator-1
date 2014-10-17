@@ -38,4 +38,10 @@ public class CalculatorTest {
 	public void testEnterBetweenNumbers() {
 		assertEquals(5, Calculator.add("0\n2,3"));
 	}
+
+	@Test
+	public void testAddDelimiter() {
+		assertEquals(5, Calculator.add("//;\n2;3"));
+		assertEquals(7, Calculator.add("//kalli\n1kalli2kalli3kalli1"));
+	}
 }
