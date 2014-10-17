@@ -8,8 +8,7 @@ public class Calculator {
 		}
 		else if (text.contains("//")) {
 			String delimiter = text.substring(2, text.indexOf('\n'));
-			String numbers   = text.substring(text.indexOf('\n'));
-			numbers = numbers.substring(1);
+			String numbers   = text.substring(text.indexOf('\n') + 1);
 			return sum(splitNumbersByDelimiter(numbers, delimiter));
 		}
 		else if(text.contains(",") || text.contains("\n")) {
