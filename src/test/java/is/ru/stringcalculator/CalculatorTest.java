@@ -33,4 +33,9 @@ public class CalculatorTest {
 	public void testNegativeNumbers() {
 		assertEquals(-6, Calculator.add("-1,-2,-3"));
 	}
+
+	@Test
+	public void testEnterBetweenNumbers() {
+		assertEquals(5, Calculator.add("0\n2,3"));
+	}
 }
