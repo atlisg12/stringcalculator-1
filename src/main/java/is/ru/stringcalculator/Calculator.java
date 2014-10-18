@@ -2,7 +2,7 @@ package is.ru.stringcalculator;
 
 public class Calculator {
 
-	public static int add(String text){
+	public static int add(String text) throws Exception {
 		if(text.equals("")){
 			return 0;
 		}
@@ -30,10 +30,21 @@ public class Calculator {
 		return numbers.split(delimiter);
 	}
 
-	private static int sum(String[] numbers){
+	private static int sum(String[] numbers) throws Exception {
  	    	int total = 0;
-        	for(String number : numbers){
-		    	total += toInt(number);
+		String negs = "";
+		boolean noNegs = true;
+        	for(String number : numbers) {
+			if (toInt(number) > -1) {
+		    		total += toInt(number);
+			} else {
+				if (negs.equals("")) negs += number;
+				else negs += "," + number;
+				noNegs = false;
+			}
+		}
+		if (!noNegs) {
+			throw new IllegalArgumentException("Negatives not allowed: " + negs);
 		}
 		return total;
     	}
