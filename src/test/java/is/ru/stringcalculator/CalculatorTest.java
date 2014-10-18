@@ -53,7 +53,7 @@ public class CalculatorTest {
 
 	@Test
 	public void testAddDelimiterOfAnyLength() throws Exception {
-		assertEquals(7, Calculator.add("//kalli\n1kalli2kalli3kalli1"));
+		assertEquals(7, Calculator.add("//[kalli]\n1kalli2kalli3kalli1"));
 	}
 
 	@Test

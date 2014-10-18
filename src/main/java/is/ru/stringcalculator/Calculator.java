@@ -8,6 +8,8 @@ public class Calculator {
 		}
 		else if (text.contains("//")) {
 			String delimiter = text.substring(2, text.indexOf('\n'));
+			if (delimiter.substring(0,1).equals("["))
+				delimiter = delimiter.substring(1, delimiter.indexOf(']'));
 			String numbers   = text.substring(text.indexOf('\n') + 1);
 			return sum(splitNumbersByDelimiter(numbers, delimiter));
 		}
@@ -15,7 +17,7 @@ public class Calculator {
 			return sum(splitNumbers(text));
 		}
 		else {
-			if (toInt(text) < 0) 
+			if (toInt(text) < 0)
 				throw new Exception("Negatives not allowed: " + text);
 			return toInt(text);
 		}
