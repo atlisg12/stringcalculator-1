@@ -1,5 +1,7 @@
 package is.ru.stringcalculator;
 
+import java.util.regex.*;
+
 public class Calculator {
 
 	public static int add(String text) throws Exception {
@@ -11,7 +13,7 @@ public class Calculator {
 			if (delimiter.substring(0,1).equals("["))
 				delimiter = delimiter.substring(1, delimiter.indexOf(']'));
 			String numbers   = text.substring(text.indexOf('\n') + 1);
-			return sum(splitNumbersByDelimiter(numbers, delimiter));
+			return sum(splitNumbersByDelimiter(numbers, Pattern.quote(delimiter)));
 		}
 		else if(text.contains(",") || text.contains("\n")) {
 			return sum(splitNumbers(text));

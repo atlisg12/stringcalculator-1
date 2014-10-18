@@ -65,5 +65,10 @@ public class CalculatorTest {
 	public void testBigNumbersWhenAddingDelimiter() throws Exception {
 		assertEquals(9, Calculator.add("//aðskilnaður\n3aðskilnaður6aðskilnaður1328aðskilnaður0aðskilnaður500005"));
 	}
+
+	@Test
+	public void testAddDelimitersOfAnyLength() throws Exception {
+		assertEquals(5, Calculator.add("//[***]\n1***4***0"));
+	}
 }
 
