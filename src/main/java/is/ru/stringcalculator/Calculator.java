@@ -32,6 +32,8 @@ public class Calculator {
 	}
 
 	private static int toInt(String number){
+		if (number.equals(""))
+			return 0;
 		if (Integer.parseInt(number) > 1000)
 			return 0;
 		return Integer.parseInt(number);
@@ -46,19 +48,18 @@ public class Calculator {
 	}
 
 	private static String[] splitNumbersByMultipleDelimiters(String numbers, String[] delimiters) {
-		String splitter = "[";
+		String splitter = "";
 		for (String del : delimiters) {
-			if (splitter.equals("["))
-				splitter += del;
+			if (splitter.equals(""))
+				splitter += "[" + del + "]";
 			else
-				splitter += "|" + del;
+				splitter += "|[" + del + "]";
 		}
-		splitter += "]";
 		return numbers.split(splitter);
 	}
 
 	private static String[] splitDelimiters(String delimiter) {
-		return delimiter.split("]\\[");
+		return delimiter.split(Pattern.quote("]["));
 	}
 
 	private static int sum(String[] numbers) throws Exception {

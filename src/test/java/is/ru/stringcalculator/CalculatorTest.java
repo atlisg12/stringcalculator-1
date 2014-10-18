@@ -72,8 +72,13 @@ public class CalculatorTest {
 	}
 
 	@Test
-	public void testAddMultipleDelimitersOfAnyLength() throws Exception {
+	public void testAddMultipleDelimiters() throws Exception {
 		assertEquals(8, Calculator.add("//[*][%][s]\n1*2%3s2"));
+	}
+
+	@Test
+	public void testAddMultipleDelimitersOfAnyLength() throws Exception {
+		assertEquals(9, Calculator.add("//[***][$][snilld]\n1***2$3snilld3"));
 	}
 }
 
