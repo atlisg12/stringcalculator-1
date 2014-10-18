@@ -15,7 +15,8 @@ public class Calculator {
 			return sum(splitNumbers(text));
 		}
 		else {
-			if (toInt(text) < 0) throw new IllegalArgumentException("Negatives not allowed: " + text);
+			if (toInt(text) < 0) 
+				throw new IllegalArgumentException("Negatives not allowed: " + text);
 			return toInt(text);
 		}
 	}
@@ -37,9 +38,9 @@ public class Calculator {
 		String negs = "";
 		boolean noNegs = true;
         	for(String number : numbers) {
-			if (toInt(number) > -1) {
+			if (toInt(number) > -1)
 		    		total += toInt(number);
-			} else {
+			else {
 				if (negs.equals("")) negs += number;
 				else negs += "," + number;
 				noNegs = false;
