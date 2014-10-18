@@ -63,5 +63,10 @@ public class CalculatorTest {
 	public void testBigNumbers() throws Exception {
 		assertEquals(2, Calculator.add("2,1001"));
 	}
+
+	@Test
+	public void testBigNumbersWhenAddingDelimiter() throws Exception {
+		assertEquals(9, Calculator.add("//aðskilnaður\n3aðskilnaður6aðskilnaður1328aðskilnaður0aðskilnaður500005"));
+	}
 }
 
