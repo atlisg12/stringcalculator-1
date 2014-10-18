@@ -58,5 +58,10 @@ public class CalculatorTest {
 		assertEquals(5, Calculator.add("//;\n2;3"));
 		assertEquals(7, Calculator.add("//kalli\n1kalli2kalli3kalli1"));
 	}
+
+	@Test
+	public void testBigNumbers() throws Exception {
+		assertEquals(2, Calculator.add("2,1001"));
+	}
 }
 

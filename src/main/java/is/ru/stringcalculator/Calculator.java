@@ -22,6 +22,7 @@ public class Calculator {
 	}
 
 	private static int toInt(String number){
+		if (Integer.parseInt(number) > 1000) return 0;
 		return Integer.parseInt(number);
 	}
 
