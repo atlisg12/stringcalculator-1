@@ -31,21 +31,14 @@ public class CalculatorTest {
     		assertEquals(6, Calculator.add("1,2,3"));
     	}
 
-	@Rule
-	public ExpectedException exc = ExpectedException.none();
-
-	@Test
-	public void testNegativeNumbersException() throws Exception {
-		exc.expect(IllegalArgumentException.class);
-		exc.expectMessage("Negatives not allowed: -1,-3");
-		Calculator.add("-1,2,-3");
+	@Test (expected = Exception.class)
+	public void testException() throws Exception {
+		assertEquals("Negatives not allowed: -1,-2,-4", Calculator.add("-1,1,-2,-4"));
 	}
 
-	@Test
-	public void testSingleNegativeException() throws Exception {
-		exc.expect(IllegalArgumentException.class);
-		exc.expectMessage("Negatives not allowed: -5");
-		Calculator.add("-5");
+	@Test (expected = Exception.class)
+	public void testExceptionSingleNegative() throws Exception {
+		assertEquals("Negatives not allowed: -3", Calculator.add("-3"));
 	}
 
 	@Test
@@ -56,6 +49,10 @@ public class CalculatorTest {
 	@Test
 	public void testAddDelimiter() throws Exception {
 		assertEquals(5, Calculator.add("//;\n2;3"));
+	}
+
+	@Test
+	public void testAddDelimiterOfAnyLength() throws Exception {
 		assertEquals(7, Calculator.add("//kalli\n1kalli2kalli3kalli1"));
 	}
 

@@ -16,7 +16,7 @@ public class Calculator {
 		}
 		else {
 			if (toInt(text) < 0) 
-				throw new IllegalArgumentException("Negatives not allowed: " + text);
+				throw new Exception("Negatives not allowed: " + text);
 			return toInt(text);
 		}
 	}
@@ -49,7 +49,7 @@ public class Calculator {
 			}
 		}
 		if (!noNegs) {
-			throw new IllegalArgumentException("Negatives not allowed: " + negs);
+			throw new Exception("Negatives not allowed: " + negs);
 		}
 		return total;
     	}
