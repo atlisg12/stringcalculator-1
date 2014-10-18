@@ -14,8 +14,10 @@ public class Calculator {
 		else if(text.contains(",") || text.contains("\n")) {
 			return sum(splitNumbers(text));
 		}
-		else
+		else {
+			if (toInt(text) < 0) throw new IllegalArgumentException("Negatives not allowed: " + text);
 			return toInt(text);
+		}
 	}
 
 	private static int toInt(String number){

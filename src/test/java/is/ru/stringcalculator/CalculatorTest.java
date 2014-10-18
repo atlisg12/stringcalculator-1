@@ -42,6 +42,13 @@ public class CalculatorTest {
 	}
 
 	@Test
+	public void testSingleNegativeException() throws Exception {
+		exc.expect(IllegalArgumentException.class);
+		exc.expectMessage("Negatives not allowed: -5");
+		Calculator.add("-5");
+	}
+
+	@Test
 	public void testEnterBetweenNumbers() throws Exception {
 		assertEquals(5, Calculator.add("0\n2,3"));
 	}
