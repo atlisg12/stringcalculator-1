@@ -18,6 +18,10 @@ public class CalculatorTest {
 	@Test
 	public void testOneNumber() throws Exception {
 		assertEquals(1, Calculator.add("1"));
+	}
+
+	@Test
+	public void testAnotherNumber() throws Exception {
 		assertEquals(5, Calculator.add("5"));
 	}
 

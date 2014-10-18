@@ -10,15 +10,14 @@ public class Calculator {
 		}
 		else if (text.contains("//")) {
 			String delimiter = text.substring(2, text.indexOf('\n'));
+			String numbers   = text.substring(text.indexOf('\n') + 1);
 			if (delimiter.substring(0,1).equals("[")) {
 				delimiter = delimiter.substring(1, delimiter.length() - 1);
 				if (delimiter.substring(1).contains("[")) {
 					String[] delimiters = splitDelimiters(delimiter);
-					String numbers      = text.substring(text.indexOf('\n') + 1);
 					return sum(splitNumbersByMultipleDelimiters(numbers, delimiters));
 				}
 			}
-			String numbers   = text.substring(text.indexOf('\n') + 1);
 			return sum(splitNumbersByDelimiter(numbers, Pattern.quote(delimiter)));
 		}
 		else if(text.contains(",") || text.contains("\n")) {
