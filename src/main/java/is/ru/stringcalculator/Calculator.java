@@ -10,8 +10,14 @@ public class Calculator {
 		}
 		else if (text.contains("//")) {
 			String delimiter = text.substring(2, text.indexOf('\n'));
-			if (delimiter.substring(0,1).equals("["))
-				delimiter = delimiter.substring(1, delimiter.indexOf(']'));
+			if (delimiter.substring(0,1).equals("[")) {
+				delimiter = delimiter.substring(1, delimiter.length() - 1);
+				if (delimiter.substring(1).contains("[")) {
+					String[] delimiters = splitDelimiters(delimiter);
+					String numbers      = text.substring(text.indexOf('\n') + 1);
+					return sum(splitNumbersByMultipleDelimiters(numbers, delimiters));
+				}
+			}
 			String numbers   = text.substring(text.indexOf('\n') + 1);
 			return sum(splitNumbersByDelimiter(numbers, Pattern.quote(delimiter)));
 		}
@@ -37,6 +43,22 @@ public class Calculator {
 
 	private static String[] splitNumbersByDelimiter(String numbers, String delimiter) {
 		return numbers.split(delimiter);
+	}
+
+	private static String[] splitNumbersByMultipleDelimiters(String numbers, String[] delimiters) {
+		String splitter = "[";
+		for (String del : delimiters) {
+			if (splitter.equals("["))
+				splitter += del;
+			else
+				splitter += "|" + del;
+		}
+		splitter += "]";
+		return numbers.split(splitter);
+	}
+
+	private static String[] splitDelimiters(String delimiter) {
+		return delimiter.split("]\\[");
 	}
 
 	private static int sum(String[] numbers) throws Exception {
